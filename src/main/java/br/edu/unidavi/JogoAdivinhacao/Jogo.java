@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class Jogo {
 
@@ -13,14 +14,15 @@ public class Jogo {
 
     public void menuJogo() {
         int opcao = 0;
-        System.out.println("---------- Jogo da adivinhacao ------------");
-        System.out.println("");
-        System.out.println("+----------------- Opções ----------------+");
-        System.out.println("|                                         |");
-        System.out.println("|               1 - Jogar                 |");
-        System.out.println("|               2 - Ranking               |");
-        System.out.println("|               3 - Sair                  |");
-        System.out.println("+-----------------------------------------+");
+
+        Logger.getGlobal().info("---------- Jogo da adivinhacao ------------");
+        Logger.getGlobal().info("");
+        Logger.getGlobal().info("+----------------- Opções ----------------+");
+        Logger.getGlobal().info("|                                         |");
+        Logger.getGlobal().info("|               1 - Jogar                 |");
+        Logger.getGlobal().info("|               2 - Ranking               |");
+        Logger.getGlobal().info("|               3 - Sair                  |");
+        Logger.getGlobal().info("+-----------------------------------------+");
         Scanner ler = new Scanner(System.in);
         opcao = ler.nextInt();
 
@@ -44,35 +46,37 @@ public class Jogo {
     private void iniciaJogo() {
 
         Jogador jogador = new Jogador();
-        System.out.println("Informe seu nome");
+        Logger.getGlobal().info("Informe seu nome");
         Scanner nome = new Scanner(System.in);
         jogador.setNome(nome.nextLine());
 
-        System.out.println("Informe sua idade");
+        Logger.getGlobal().info("Informe sua idade");
         Scanner idade = new Scanner(System.in);
         jogador.setIdade(idade.nextInt());
 
-        System.out.println("Informe seu NickName");
+        Logger.getGlobal().info("Informe seu NickName");
         Scanner nick = new Scanner(System.in);
         jogador.setNickName(nick.nextLine());
 
         int dificuldade = 0;
-        System.out.println("+--------------------------------------+");
-        System.out.println("|   Por favor informe a dificuldade    |");
-        System.out.println("|                                      |");
-        System.out.println("|            1 - Normal                |");
-        System.out.println("|            2 - Expert                |");
-        System.out.println("+--------------------------------------+");
+        Logger.getGlobal().info("+--------------------------------------+");
+        Logger.getGlobal().info("|   Por favor informe a dificuldade    |");
+        Logger.getGlobal().info("|                                      |");
+        Logger.getGlobal().info("|            1 - Normal                |");
+        Logger.getGlobal().info("|            2 - Expert                |");
+        Logger.getGlobal().info("+--------------------------------------+");
         Scanner scan = new Scanner(System.in);
         dificuldade = scan.nextInt();
         Numero numero = new Numero(dificuldade);
-        System.out.println("+------------------------------------+");
-        System.out.println("|    Número sorteado entre 0 e " + (dificuldade == 1 ? 20 : 100) + "    |");
+        Logger.getGlobal().info("+------------------------------------+");
+
+        Logger.getGlobal().info("|    Número sorteado entre 0 e " + (dificuldade == 1 ? 20 : 100) + "    |");
         Tentativa tentativa = new Tentativa(dificuldade);
         System.out.println("+------------------------------------+");
+        Logger.getGlobal().info("+------------------------------------+");
 
         while (tentativa.getTentativas() > 0) {
-            System.out.println("Por favor informe um número");
+            Logger.getGlobal().info("Por favor informe um número");
             Scanner leitura = new Scanner(System.in);
             boolean acertou = numero.verificaNumero(leitura.nextInt());
             if (acertou) {
@@ -90,31 +94,31 @@ public class Jogo {
 
 
     private void imprimirRanking() {
-        System.out.println("----------- Ranking Amadores --------------");
+        Logger.getGlobal().info("----------- Ranking Amadores --------------");
         if (rankingAmador.size() > 0) {
             Collections.sort(rankingAmador);
             for (Jogador jogador : rankingAmador) {
-                System.out.println(String.format("%-20s %d pontos",
-                        jogador.getNickName(),
+                Logger.getGlobal().info("%-20s %d pontos");
+                jogador.getNickName(),
                         jogador.getPontos()));
             }
         } else {
-            System.out.println("+-----------------------------------------------+");
-            System.out.println("|  Ranking de amadores vazio, por favor jogue!  |");
-            System.out.println("+-----------------------------------------------+");
+            Logger.getGlobal().info("+-----------------------------------------------+");
+            Logger.getGlobal().info("|  Ranking de amadores vazio, por favor jogue!  |");
+            Logger.getGlobal().info("+-----------------------------------------------+");
         }
-        System.out.println("----------- Ranking Experts ---------------");
+        Logger.getGlobal().info("----------- Ranking Experts ---------------");
         if (rankingExpert.size() > 0) {
             Collections.sort(rankingExpert);
             for (Jogador jogador : rankingExpert) {
-                System.out.println(String.format("%-20s %d pontos",
-                        jogador.getNickName(),
+                Logger.getGlobal().info("%-20s %d pontos");
+                jogador.getNickName(),
                         jogador.getPontos()));
             }
         } else {
-            System.out.println("+-----------------------------------------------+");
-            System.out.println("|   Ranking de Experts vazio, por favor jogue!  |");
-            System.out.println("+-----------------------------------------------+");
+            Logger.getGlobal().info("+-----------------------------------------------+");
+            Logger.getGlobal().info("|   Ranking de Experts vazio, por favor jogue!  |");
+            Logger.getGlobal().info("+-----------------------------------------------+");
         }
     }
 }

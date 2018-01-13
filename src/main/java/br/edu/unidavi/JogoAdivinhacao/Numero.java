@@ -2,6 +2,7 @@ package br.edu.unidavi.JogoAdivinhacao;
 
 
 import java.util.Random;
+import java.util.logging.Logger;
 
 public class Numero {
 
@@ -46,15 +47,15 @@ public class Numero {
     public boolean verificaNumero(int numero) {
 
         if (numero > this.numero) {
-            System.out.println("Numero mais baixo");
+            Logger.getGlobal().info("Numero mais baixo");
             return false;
         } else if (numero < this.numero) {
-            System.out.println("Numero mais alto");
+            Logger.getGlobal().info("Numero mais alto");
             return false;
         } else {
-            System.out.println("+----------------------------+");
-            System.out.println("|   Parabéns você acertou!   |");
-            System.out.println("+----------------------------+");
+            Logger.getGlobal().info("+----------------------------+");
+            Logger.getGlobal().info("|   Parabéns você acertou!   |");
+            Logger.getGlobal().info("+----------------------------+");
             return true;
         }
     }

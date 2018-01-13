@@ -1,5 +1,7 @@
 package br.edu.unidavi.JogoAdivinhacao;
 
+import java.util.logging.Logger;
+
 public class Tentativa {
 
     private int tentativas;
@@ -23,7 +25,7 @@ public class Tentativa {
 
     public void setTentativas() {
         this.tentativas--;
-        System.out.println("Tentativas restantes " + this.tentativas);
+        Logger.getGlobal().info("Tentativas restantes " + this.tentativas);
     }
 
 }
