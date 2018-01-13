@@ -1,4 +1,4 @@
-package JogoAdivinhacao;
+package br.edu.unidavi.JogoAdivinhacao;
 
 public class Tentativa {
 

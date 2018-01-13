@@ -1,6 +1,4 @@
-package JogoAdivinhacao;
-
-import jdk.nashorn.internal.scripts.JO;
+package br.edu.unidavi.JogoAdivinhacao;
 
 public class Jogador extends Pessoa implements Comparable<Jogador> {
 

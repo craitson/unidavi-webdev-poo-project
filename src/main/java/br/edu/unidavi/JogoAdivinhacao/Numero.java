@@ -1,4 +1,4 @@
-package JogoAdivinhacao;
+package br.edu.unidavi.JogoAdivinhacao;
 
 
 import java.util.Random;
